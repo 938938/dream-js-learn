@@ -21,3 +21,5 @@ text = '7'+5;
 console.log(`value:${text}, type:${typeof text}`); //vlaue:75, type:string
 text = '8'/'2';
 console.log(`value:${text}, type:${typeof text}`); //vlaue:4, type:number
+
+
