@@ -92,6 +92,10 @@ const rectangle = new Rectangle(20, 20, 'blue');
 const triangle = new Triangle(20, 20, 'red');
 rectangle.draw(); // drawing blue color of
 
-//6. Class checking : instanceOf
-console.log(rectangle instanceof Rectangle);
-console.log(triangle instanceof Rectangle);
+//6. Class checking : instanceOf // 오브젝트가 오른쪽 클래스를 이용해서 만들어진건지 아닌지 확인 true & false
+console.log(rectangle instanceof Rectangle); //t
+console.log(triangle instanceof Rectangle); //t
+console.log(triangle instanceof Triangle); //t
+console.log(triangle instanceof shape); //t
+console.log(triangle instanceof Object); //t
+
