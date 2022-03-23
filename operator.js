@@ -23,6 +23,7 @@ const postIncrement = counter++;
 //postIncrement = counter;
 //counter = counter+1;
 //postIncrement = 3 //counter = 4
+//++의 위치에 따라 업데이트 순서가 달라짐.(--도 같음)
 
 //4. Assigment operators
 let x = 3;
@@ -32,10 +33,30 @@ x -= y;
 x *= y;
 x /= y;
 
+//5. Logical operators : || (or), && {and}, ! (not)
+
+// a || b || c  : a나 b나 c 중 하나라도 true면 참.
+// 만약 a가 참이면 거기서 멈춤. b, c 판단 안함.
+// 심플한 값을 앞에 두고 시간이 걸리는 함수 등은 뒤에 위치
+
+const value1 = false;
+const value2 = 4<2; // false
+
+console.log(`or : ${value1 || value2 || check()}`);
+
+function check(){
+  for(let i = 0; i < 10; i ++){
+    //wasting time
+    console.log('house');
+  }
+  return true;
+} // true
+
 if(nullableObject !=null ){
   nullableObject.something;
 }
 
+//5. Equality
 //== : loose equality, with type conversiton
 //=== : strict equality, no type conversion
 const stringFive = '5';
@@ -50,7 +71,7 @@ console.log(a==b);//false
 console.log(a===b);//false
 console.log(a===c);//true
 
-// Conditional operators : if
+//6. Conditional operators : if
 const name = 'abc';
 if ( name==='abc'){
   console.log("Welcome, abc!");
@@ -60,11 +81,11 @@ if ( name==='abc'){
   console.log("unknown");
 }
 
-// Ternary operator : ?
-//condition ? value1 : value2;
+//7. Ternary operator : ?
+//condition ? value1 : value2; // 조건이 참이면 value1, 거짓이면 value2 실행
 console.log( name === 'abc' ? 'yes' : 'no');
 
-// Switch statement
+//8. Switch statement
 const browser = 'IE';
 switch (browser){
   case 'IE':
@@ -79,7 +100,7 @@ switch (browser){
     break;
 }
 
-//Loops
+//9. Loops
 let i = 3;
 while ( i>0 ){
   console.log(i);
@@ -89,7 +110,7 @@ while ( i>0 ){
 // 2
 // 1
 
-do{
+do{  // 블럭을 실행한 다음 조건이 맞는지 안맞는지 검사.
   console.log{i};
   i--;
 } while ( i>0 );
@@ -100,9 +121,12 @@ for(i = 3; i>0; i--){
   console.log(i);
 }
 //3
+//2
+//1
 for(let i = 3; i>0; i=i-2){
   console.log(i);
 }
+//3
 //1
 
 // nested loops

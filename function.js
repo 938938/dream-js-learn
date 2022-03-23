@@ -1,6 +1,6 @@
 // function 
-// function = object in JS
-// =변수할당, return, 파라미터 가능
+// function = object in JS / 서브 프로그램이라고도 부름
+// =변수할당, return, 파라미터 가능 , 여러번 사용 가능. 주로 한가지 기능.
 
 function log(message){
   console.log(message);
@@ -41,9 +41,14 @@ printAll('dream','coding','abc');
 // Local scope
 let globalMessage = 'global'; // global variable
 function printMessage(){
-  let message = 'hello';
+  let message = 'hello'; // 지역변수
   console.log(message); // local variable
   console.log(globalMessage);
+  function printAnother(){
+    console.log(message);
+    let childMessage = 'hello';
+  };
+  console.log(childMessage); // 에러. 자식 함수에서 정의된 값은 부모는 알 수 없음.
 }
 printMessage(); // hello / global
 
@@ -55,8 +60,7 @@ const result = sum(1,2); //3
 console.log(`sum : ${sum(1,2)}`); // sum : 3
 //return값이 따로 지정되어있지 않은 함수는 return undefined가 기본 설정되어있음(생략)
 
-// Early return, early exit
-
+//7. Early return, early exit
 //bad
 function upgradeUser(user){
   if(user.point>10){
@@ -72,11 +76,15 @@ function upgradeUser(user){
   //long upgrade logic...
 }
 
-//function expression << 호이스팅이 가능함
-const print = function (){ //anonymous function //이름 작성할 수도 있음(name function)
+//function expression << 할당된 다음부터 호출이 가능. ↔ function declaration : 호이스팅이 가능함
+const print = function (){ //anonymous function(이름없는함수) //이름 작성할 수도 있음(name function)
   console.log('print');
 };
-print();
+print(); // print
+const printAgain = print; //print
+printAgain();
+const sumAgain = sum;
+console.log(sumAgain(1,3)); // 4
 
 //Callback function 함수에 함수를 포함.
 function randomQuiz(answer, printYes, printNo){
@@ -89,11 +97,14 @@ function randomQuiz(answer, printYes, printNo){
 const printYes = function (){
   console.log('yes');
 };
-const printNo = function (){
+const printNo = function print(){ // 디버깅을 할 때 찾기 쉽도록 이름 붙여놓음.
   console.log('no');
 }
 
-// Arrow function // always anonymous
+randomQuiz('wrong', printYes, printNo);
+randomQuiz('love you', printYes, printNo);
+
+// Arrow function // always anonymous // 간편하게 function 사용 가능.
 const simplePrint1 = function(){
   console.log('simple');
 }
@@ -108,4 +119,4 @@ const simpleMultiply = (a, b) => {
 // IIFE
 (function hello(){
   console.log('IIFE');
-})(); // 바로 함수 호출
+})(); // 선언함과 동시에 바로 함수 호출
